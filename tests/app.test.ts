@@ -18,7 +18,7 @@ describe('Server App', () => {
   })
 
   test('POST /api/book/create', async () => {
-    const title = crypto.randomUUID()
+    const title = 'Random Book'
 
     const response = await server
       .post('/api/book/create')
@@ -26,7 +26,8 @@ describe('Server App', () => {
       .send({
         title,
         chapter: 8,
-        pages: 100
+        pages: 100,
+        authors: [{ name: 'Random Author' }]
       })
 
     expect(response.status).toBe(201)
@@ -39,19 +40,21 @@ describe('Server App', () => {
       .set('Accept', 'application/json')
 
     const data = await prisma.book.findMany()
-    // console.log({ data })
 
     expect(response.status).toBe(200)
     expect(response.body.data.length).greaterThanOrEqual(data.length)
   })
 
-  // test('DELETE /api/book/:id', async () => {
-  //   const data = await prisma.post.findFirst()
+  test('GET /api/book/average/:id', async () => {
+    const data = await prisma.book.findFirst()
 
-  //   expect(data).not.toBeNull()
+    expect(data).not.toBeNull()
 
-  //   const response = await server.delete(`/api/book/${data.id}`)
+    const response = await server.get(`/api/book/average/${data.id}`)
 
-  //   expect(response.status).toBe(200)
-  // })
+    expect(response.status).toBe(200)
+
+    const averagePage = Number(data.pages / data.chapters).toFixed(2)
+    expect(response.body.data.averagePage).toBe(averagePage)
+  })
 })

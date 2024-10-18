@@ -1,2 +1,0 @@
-GET http://localhost:3000/api/book/average/f6653ca4-ecbd-4460-b612-947a94670bae
-Content-Type: application/json
