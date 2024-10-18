@@ -40,13 +40,19 @@ Se puede usar almacenamiento en memoria o el sistema gestor de bases de datos de
 - [x] _Se pueden asumir los aspectos que no aclare el enunciado, y realizar aclaraciones personales en caso de ser necesario._
 - [x] _El código debe ser enteramente desarrollado en Typescript._
 
-
 ### Comandos
+
+**Para iniciar la DB por primera vez usar:**
+
+```bash
+pnpm install
+pnpm db:init
+pnpm db:migrate
+```
 
 Para ejecutar el proyecto:
 
 ```bash
-pnpm install
 pnpm run dev
 ```
 
