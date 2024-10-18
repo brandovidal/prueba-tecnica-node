@@ -1,0 +1,15 @@
+# POST http://localhost:3000/api/post/create
+# Content-Type: application/json
+
+# {
+#   "title": "Figma",
+#   "content": "Curso de Figma"
+# }
+
+POST http://localhost:3000/api/post/create
+Content-Type: application/json
+
+{
+  "title": "React",
+  "content": "Aprendiendo React"
+}
