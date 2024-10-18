@@ -5,10 +5,10 @@
   "main": "server.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --exit-child ./src/server.ts",
-    "db:init": "pnpm dlx prisma init --datasource-provider sqlite",
-    "db:migrate": "pnpm dlx prisma migrate dev --name init && pnpm dlx prisma generate",
-    "db:push": "pnpm dlx prisma db push",
-    "db:studio": "pnpm dlx prisma studio",
+    "db:init": "npx prisma init --datasource-provider sqlite",
+    "db:migrate": "npx prisma migrate dev --name init && npx prisma generate",
+    "db:push": "npx prisma db push",
+    "db:studio": "npx prisma studio",
     "test": "vitest",
     "test:ui": "vitest --ui"
   },

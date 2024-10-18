@@ -39,3 +39,19 @@ Se puede usar almacenamiento en memoria o el sistema gestor de bases de datos de
 - [x] _Para la prueba es necesario realizar lo que dicta el enunciado, aunque se pueden agregar características no mencionadas (manejo de errores, repositorio de datos, validaciones, etc.)._
 - [x] _Se pueden asumir los aspectos que no aclare el enunciado, y realizar aclaraciones personales en caso de ser necesario._
 - [x] _El código debe ser enteramente desarrollado en Typescript._
+
+
+### Comandos
+
+Para ejecutar el proyecto:
+
+```bash
+pnpm install
+pnpm run dev
+```
+
+Adicional
+
+```bash
+npm run test
+```
