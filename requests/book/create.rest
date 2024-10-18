@@ -5,5 +5,5 @@ Content-Type: application/json
   "title": "Aprendiendo React",
   "chapters": 13,
   "pages": 50,
-  "authors": [{ "name": "Jhon Doe" }]
+  "authors": [{ "name": "Midudev" }]
 }

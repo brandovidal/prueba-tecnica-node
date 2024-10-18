@@ -28,7 +28,4 @@ model Author {
   updatedAt DateTime @updatedAt
 
   books Book[]
-
-  // book   Book   @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  // postId String
 }
