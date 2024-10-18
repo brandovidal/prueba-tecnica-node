@@ -1,2 +1,2 @@
-GET http://localhost:3000/api/book/average/203e451f-8529-4403-b22a-bf6c6ce36ebd
+GET http://localhost:3000/api/book/average/1
 Content-Type: application/json

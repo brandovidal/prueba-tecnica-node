@@ -25,7 +25,7 @@ describe('Server App', () => {
       .set('Accept', 'application/json')
       .send({
         title,
-        chapter: 8,
+        chapters: 8,
         pages: 100,
         authors: [{ name: 'Random Author' }]
       })

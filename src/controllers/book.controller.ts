@@ -40,9 +40,9 @@ const getAverageBook = async (req: Request, res: Response) => {
   try {
     const { id } = req.params
 
-    const book = await prisma.book.findUnique({ where: { id } })
+    const book = await prisma.book.findUnique({ where: { id: Number(id) } })
 
-    const averagePage = Number(book.pages / book.chapters).toFixed(2)
+    const averagePage = Number(book.pages / book.chapters ?? 0).toFixed(2)
 
     const data = {
       id: book.id,
