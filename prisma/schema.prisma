@@ -10,23 +10,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
+model Book {
   id         String   @id @default(uuid())
   title      String
-  content    String
-  likesCount Int      @default(0)
+  chapters Int      @default(0)
+  pages Int      @default(0)
   createsAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
-  comments Comment[]
+  authors Author[]
 }
 
-model Comment {
+model Author {
   id        String   @id @default(uuid())
-  content   String
+  name   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  postId String
+  books Book[]
+
+  // book   Book   @relation(fields: [postId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  // postId String
 }

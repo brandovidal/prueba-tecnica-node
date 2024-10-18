@@ -1,8 +1,8 @@
 {
-  "name": "prisma-typescript-blog",
+  "name": "prueba-tecnica-node",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only --exit-child ./src/server.ts",
     "db:init": "pnpm dlx prisma init --datasource-provider sqlite",
@@ -17,7 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "5.21.1",
-    "express": "4.21.1"
+    "express": "4.21.1",
+    "morgan": "1.10.0"
   },
   "devDependencies": {
     "@types/express": "5.0.0",

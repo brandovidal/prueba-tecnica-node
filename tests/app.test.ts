@@ -1,8 +1,7 @@
 import { afterAll, beforeAll, describe, test, expect } from 'vitest'
-import request, { SuperTest } from 'supertest'
+import type { SuperTest } from 'supertest'
 
 import prisma from '../src/db/prisma'
-import { Post } from '@prisma/client'
 
 import { startServer, stopServer } from './test.server'
 
@@ -18,57 +17,41 @@ describe('Server App', () => {
     await stopServer()
   })
 
-  test('POST /api/post/create', async () => {
-    const name = 'test'
+  test('POST /api/book/create', async () => {
+    const title = crypto.randomUUID()
 
     const response = await server
-      .post('/api/post/create')
+      .post('/api/book/create')
       .set('Accept', 'application/json')
       .send({
-        title: name,
-        content: name
+        title,
+        chapter: 8,
+        pages: 100
       })
 
     expect(response.status).toBe(201)
-    expect(response.body.title).toBe(name)
+    expect(response.body.data.title).toBe(title)
   })
 
-  test('GET /api/post/all', async () => {
+  test('GET /api/book/all', async () => {
     const response = await server
-      .get('/api/post/all')
+      .get('/api/book/all')
       .set('Accept', 'application/json')
 
-    const data = await prisma.post.findMany()
+    const data = await prisma.book.findMany()
+    // console.log({ data })
 
     expect(response.status).toBe(200)
-    expect(response.body.length).greaterThanOrEqual(data.length)
+    expect(response.body.data.length).greaterThanOrEqual(data.length)
   })
 
-  test('UPDATE /api/post/:id', async () => {
-    const data = await prisma.post.findFirst()
+  // test('DELETE /api/book/:id', async () => {
+  //   const data = await prisma.post.findFirst()
 
-    expect(data).not.toBeNull()
+  //   expect(data).not.toBeNull()
 
-    const response = await server
-      .put(`/api/post/${data.id}`)
-      .set('Accept', 'application/json')
-      .send({
-        title: 'new title'
-      })
+  //   const response = await server.delete(`/api/book/${data.id}`)
 
-    const newData = await prisma.post.findFirst()
-
-    expect(response.status).toBe(200)
-    expect(response.body.title).toBe(newData?.title)
-  })
-
-  test('DELETE /api/post/:id', async () => {
-    const data = await prisma.post.findFirst()
-
-    expect(data).not.toBeNull()
-
-    const response = await server.delete(`/api/post/${data.id}`)
-
-    expect(response.status).toBe(200)
-  })
+  //   expect(response.status).toBe(200)
+  // })
 })

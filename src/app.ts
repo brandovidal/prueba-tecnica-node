@@ -1,23 +1,22 @@
-import express from 'express'
+import express, { json } from 'express'
+
 import type * as http from 'http'
+import morgan from 'morgan'
 
-import { PrismaClient } from '@prisma/client'
-
-import postRouter from './routes/post.route'
-import { prisma } from './db/prisma'
+import bookRouter from './routes/book.route'
+import authorRouter from './routes/author.route'
 
 const PORT = 3000
 let httpServer: http.Server
 
 async function start (port = PORT) {
   const app = express()
-  app.use(express.json())
 
-  app.get('/', (req, res) => {
-    res.send('App is running!')
-  })
+  app.use(json())
+  app.use(morgan('dev'))
 
-  app.use('/api/post', postRouter)
+  app.use('/api/book', bookRouter)
+  app.use('/api/author', authorRouter)
 
   app.all('*', (req, res) => {
     res.status(404).send('Route not found')

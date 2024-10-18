@@ -1,2 +1,0 @@
-DELETE http://localhost:3000/api/post/1
-Content-Type: application/json

@@ -1,0 +1,13 @@
+# POST http://localhost:3000/api/author/create
+# Content-Type: application/json
+
+# {
+#   "name": "Frank Kafka"
+# }
+
+POST http://localhost:3000/api/author/create
+Content-Type: application/json
+
+{
+  "name": "Dante Alighieri"
+}
