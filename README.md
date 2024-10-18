@@ -44,6 +44,8 @@ Se puede usar almacenamiento en memoria o el sistema gestor de bases de datos de
 
 **Para iniciar la DB por primera vez usar:**
 
+> Renombrar el archivo `.env.example` por `.env`
+
 ```bash
 pnpm install
 pnpm db:init
